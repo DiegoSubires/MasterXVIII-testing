@@ -1,0 +1,66 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    name: Build & Run Tests
+    runs-on: ubuntu-latest
+    env:
+      PORT: 4173
+
+    steps:
+      # 1. Obtener código fuente
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Configurar Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      # 3. Instalar dependencias
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Verificación de tipos TypeScript
+      - name: Type Check
+        run: npm run type-check
+
+      # 5. Tests Unitarios (Vitest)
+      - name: Run Unit Tests
+        run: npm run test:unit
+
+      # 6. Compilar aplicación para los tests E2E
+      - name: Build Application
+        run: npm run build:prod
+
+      # 7. Playwright E2E Tests
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright Tests
+        run: npm run test:e2e:playwright
+
+      # 8. Cypress E2E Tests
+      - name: Run Cypress Tests
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm run start:preview
+          wait-on: 'http://localhost:${{ env.PORT }}'
+          wait-on-timeout: 120
+
+      # 9. Guardar reportes en caso de fallo en Playwright
+      - name: Upload Playwright Artifacts
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 5
