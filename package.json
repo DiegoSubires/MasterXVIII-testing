@@ -51,8 +51,8 @@
     "react-spinners": "^0.17.0"
   },
   "devDependencies": {
-    "@babel/core": "^8.0.1",
-    "@babel/preset-typescript": "^8.0.1",
+    "@babel/core": "^7.28.0",
+    "@babel/preset-typescript": "^7.26.0",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
     "@cypress/vite-dev-server": "^7.3.4",
     "@cypress/webpack-preprocessor": "^7.1.1",
