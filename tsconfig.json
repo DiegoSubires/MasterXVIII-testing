@@ -4,6 +4,8 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "strict": false,
+    "strictNullChecks": false,
+    "forceConsistentCasingInFileNames": true,
     "declaration": false,
     "noImplicitAny": false,
     "sourceMap": true,

@@ -1,10 +1,36 @@
+# Dependencias y compilación
 node_modules
 dist
-coverage
+.env
+.env.local
+
+# Archivos de caché y logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
 .awcache
+
+# Reportes de cobertura (Vitest / Jest)
+coverage
 test-report.*
 junit.xml
-*.log
-*.orig
-.awcache
-public
+
+# Archivos generados por Playwright
+playwright-report/
+blob-report/
+test-results/
+
+# Archivos generados por Cypress
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+
+# Sistema operativo e IDEs
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.idea
