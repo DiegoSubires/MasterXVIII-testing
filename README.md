@@ -81,15 +81,15 @@ Para resolverlo se utilizó start-server-and-test, que espera a que la aplicaci�
 
 ## ⚙️ Pipeline de Integración Continua
 
-El flujo de trabajo definido en `.github/workflows/ci.yml` ejecuta automáticamente las siguientes fases en cada push o pull request sobre la rama principal o de trabajo[cite: 3]:
+El flujo de trabajo definido en `.github/workflows/ci.yml` ejecuta automáticamente las siguientes fases en cada push o pull request sobre la rama principal o de trabajo:
 
-1. **Checkout del repositorio**[cite: 3].
-2. **Setup de Node.js** e instalación de dependencias mediante `npm ci`[cite: 3].
-3. **Verificación estática de tipos** (`type-check`)[cite: 3].
-4. **Ejecución de pruebas unitarias** con Vitest[cite: 3].
-5. **Instalación y configuración de navegadores** para Playwright[cite: 3].
-6. **Compilación** de la aplicación (`build`)[cite: 3].
-7. **Ejecución de pruebas E2E** con Playwright y Cypress[cite: 3].
+1. **Checkout del repositorio**.
+2. **Setup de Node.js** e instalación de dependencias mediante `npm ci`.
+3. **Verificación estática de tipos** (`type-check`).
+4. **Ejecución de pruebas unitarias** con Vitest.
+5. **Instalación y configuración de navegadores** para Playwright.
+6. **Compilación** de la aplicación (`build`).
+7. **Ejecución de pruebas E2E** con Playwright y Cypress.
 
 ### 📊 Resultado de la ejecución de pruebas (GitHub Actions)
 
